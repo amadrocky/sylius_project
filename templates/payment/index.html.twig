@@ -1,8 +1,63 @@
 {% extends '@SyliusShop/Checkout/layout.html.twig' %}
 
-{% block title %}Payment
+
+{% block title %}Subscription
 {% endblock %}
 
 {% block content %}
-	<h1>Payment</h1>
+	<h1 class="mb-4" style="font-weight: bold">Subscription</h1>
+	<h3>Make your choice</h3>
+	<div class="row mb-5">
+		<div class="col">
+			<div class="card">
+				<svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image cap" preserveaspectratio="xMidYMid slice" role="img">
+					<title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="20%" y="50%" fill="#dee2e6" dy=".3em" style="font-size: 50px">6 months</text>
+				</svg>
+
+				<div class="card-body">
+					<p class="card-text">Six month subsription.</p>
+				</div>
+				<div class="card-footer text-center">
+					<form action="/payment/process?period=6" method="POST">
+						<script
+							src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+							data-key="pk_test_51I7qCgIjktDIYiezyk245q27khXTpXCzXgu9AMx3A6n1ay8U81Ap7Rt8EpMUwu9kk9qWC2QC5Ymi0MJ9eJahAiBR00gqYitQ6F"
+							data-amount="999"
+							data-name="6 month subscription"
+							data-description="Add your informations"
+							data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+							data-locale="auto"
+							data-currency="usd">
+						</script>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card">
+				<svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image cap" preserveaspectratio="xMidYMid slice" role="img">
+					<title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="15%" y="50%" fill="#dee2e6" dy=".3em" style="font-size: 50px">12 months</text>
+				</svg>
+
+				<div class="card-body">
+					<p class="card-text">Twelve month subsription.</p>
+					<a href="#" class="ui large primary button">Suscribe</a>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card">
+				<svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image cap" preserveaspectratio="xMidYMid slice" role="img">
+					<title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="15%" y="50%" fill="#dee2e6" dy=".3em" style="font-size: 50px">24 months</text>
+				</svg>
+
+				<div class="card-body">
+					<p class="card-text">Twenty-four month subscription.</p>
+					<a href="#" class="ui large primary button">Suscribe</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 {% endblock %}
