@@ -7,6 +7,14 @@
 {% block content %}
 	<h1 class="mb-4" style="font-weight: bold">Subscription</h1>
 	<h3>Make your choice</h3>
+	<form action="{{ path('payment_process') }}" id="card_form" method="post" class="card m-3 p-3 bg-secondary" style="width: 18rem;">
+		<input type="text" class="form-control" placeholder="example@example.com" name="email">
+		<input type="number" class="form-control my-1" placeholder="4242424242424242" name="card_number">
+		<div class="d-flex">
+			<input type="number" placeholder="MMYY" class="form-control" name="card_exp">
+			<input type="number" placeholder="CVC" class="form-control" name="card_cvc">
+		</div>
+	</form>
 	<div class="row mb-5">
 		<div class="col">
 			<div class="card">
@@ -18,18 +26,7 @@
 					<p class="card-text">Six month subsription.</p>
 				</div>
 				<div class="card-footer text-center">
-					<form action="/payment/process?period=6" method="POST">
-						<script
-							src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-							data-key="pk_test_51I7qCgIjktDIYiezyk245q27khXTpXCzXgu9AMx3A6n1ay8U81Ap7Rt8EpMUwu9kk9qWC2QC5Ymi0MJ9eJahAiBR00gqYitQ6F"
-							data-amount="999"
-							data-name="6 month subscription"
-							data-description="Add your informations"
-							data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-							data-locale="auto"
-							data-currency="usd">
-						</script>
-					</form>
+					<a href="/payment/process?period=6" class="ui large primary button" onclick="submit()">Suscribe</a>
 				</div>
 			</div>
 		</div>
@@ -41,6 +38,8 @@
 
 				<div class="card-body">
 					<p class="card-text">Twelve month subsription.</p>
+				</div>
+				<div class="card-footer text-center">
 					<a href="#" class="ui large primary button">Suscribe</a>
 				</div>
 			</div>
@@ -53,11 +52,19 @@
 
 				<div class="card-body">
 					<p class="card-text">Twenty-four month subscription.</p>
+				</div>
+				<div class="card-footer text-center">
 					<a href="#" class="ui large primary button">Suscribe</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<script type="text/javascript">
+		var form = document.getElementById("card_form")
 
+		function submit() {
+			form.submit();
+		}
+	</script>
 {% endblock %}
