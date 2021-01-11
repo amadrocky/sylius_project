@@ -6,16 +6,8 @@
 
 {% block content %}
 	<h1 class="mb-4" style="font-weight: bold">Subscription</h1>
-	<h3>Make your choice</h3>
-	<form action="{{ path('payment_process') }}" id="card_form" method="post" class="card m-3 p-3 bg-secondary" style="width: 18rem;">
-		<input type="text" class="form-control" placeholder="example@example.com" name="email">
-		<input type="number" class="form-control my-1" placeholder="4242424242424242" name="card_number">
-		<div class="d-flex">
-			<input type="number" placeholder="MMYY" class="form-control" name="card_exp">
-			<input type="number" placeholder="CVC" class="form-control" name="card_cvc">
-		</div>
-	</form>
-	<div class="row mb-5">
+	<h3>1) Make your choice</h3>
+	<div class="row mb-3">
 		<div class="col">
 			<div class="card">
 				<svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image cap" preserveaspectratio="xMidYMid slice" role="img">
@@ -26,7 +18,7 @@
 					<p class="card-text">Six month subsription.</p>
 				</div>
 				<div class="card-footer text-center">
-					<a href="/payment/process?period=6" class="ui large primary button" onclick="submit()">Suscribe</a>
+					<div class="ui large primary button">$ 9.99</div>
 				</div>
 			</div>
 		</div>
@@ -40,7 +32,7 @@
 					<p class="card-text">Twelve month subsription.</p>
 				</div>
 				<div class="card-footer text-center">
-					<a href="#" class="ui large primary button">Suscribe</a>
+					<div class="ui large primary button">$ 29.99</div>
 				</div>
 			</div>
 		</div>
@@ -54,17 +46,46 @@
 					<p class="card-text">Twenty-four month subscription.</p>
 				</div>
 				<div class="card-footer text-center">
-					<a href="#" class="ui large primary button">Suscribe</a>
+					<div class="ui large primary button">$ 39.99</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<h3>2) Enter your card informations</h3>
+	<form action="{{ path('payment_process') }}" id="card_form" method="post" class="card m-3 p-3 bg-secondary" style="width: 18rem;">
+		<input type="text" class="form-control" placeholder="example@example.com" name="email" required>
+		<input type="text" pattern="\d*" class="form-control my-1" placeholder="4242424242424242" name="card_number" maxlength="16" required>
+		<div class="d-flex">
+			<select name="card_exp_month" class="form-control my-1" required>
+				<option value="1">1 - January</option>
+				<option value="2">2 - February</option>
+				<option value="3">3 - March</option>
+				<option value="4">4 - April</option>
+				<option value="5">5 - May</option>
+				<option value="6">6 - June</option>
+				<option value="7">7 - July</option>
+				<option value="8">8 - August</option>
+				<option value="9">9 - September</option>
+				<option value="10">10 - October</option>
+				<option value="11">11 - November</option>
+				<option value="12">12 - December</option>
+			</select>
+			<select name="card_exp_year" class="form-control my-1" required>
+				<option value="2018">2018</option>
+				<option value="2019">2019</option>
+				<option value="2020">2020</option>
+				<option value="2021">2021</option>
+				<option value="2022">2022</option>
+				<option value="2023">2023</option>
+			</select>
 
-	<script type="text/javascript">
-		var form = document.getElementById("card_form")
-
-		function submit() {
-			form.submit();
-		}
-	</script>
+		</div>
+		<input type="text" pattern="\d*" placeholder="CVC" class="form-control" name="card_cvc" maxlength="3" style="width: 50px" required>
+		<select name="subscription" id="subscription" class="form-control my-1" required>
+			<option value="6">6 month subscription</option>
+			<option value="12">12 month subscription</option>
+			<option value="24">24 month subscription</option>
+		</select>
+		<button type="submit" class="ui large secondary button mt-2">Suscribe</button>
+	</form>
 {% endblock %}
