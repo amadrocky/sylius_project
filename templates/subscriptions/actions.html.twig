@@ -1,0 +1,89 @@
+{% extends '@SyliusUi/Layout/sidebar.html.twig' %}
+
+{% block title %}
+	| Sylius
+{% endblock %}
+
+{% block stylesheets %}
+	{{ sylius_template_event('sylius.admin.layout.stylesheets') }}
+{% endblock %}
+
+{% block flash_messages %}
+	{% include '@SyliusAdmin/_flashes.html.twig' %}
+{% endblock %}
+
+{% block topbar %}
+	{{ sylius_template_event('sylius.admin.layout.topbar_left') }}
+
+	<div class="ui left floated dividing empty item"></div>
+
+	{{ sylius_template_event('sylius.admin.layout.topbar_middle') }}
+
+	<div class="ui right floated dividing empty item"></div>
+
+	{{ sylius_template_event('sylius.admin.layout.topbar_right') }}
+{% endblock %}
+
+{% block sidebar %}
+	{{ sylius_template_event('sylius.admin.layout.sidebar') }}
+{% endblock %}
+
+{% block content %}
+	<h1>Actions</h1>
+
+	<table class="ui sortable stackable very basic celled table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Customer</th>
+				<th>Price</th>
+				<th>Ending</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ subscription['id'] }}</td>
+				<td>{{ subscription['customer'] }}</td>
+				<td>$
+					{{ subscription['price'] / 100 }}</td>
+				<td>{{ subscription['ending']|date('d/m/Y') }}</td>
+			</tr>
+		</tbody>
+	</tbody>
+</table>
+
+<div style="display: flex">
+	<div>
+		<h3>Modify price</h3>
+		<a href="#" class="ui large primary button">
+			Modify price
+		</a>
+	</div>
+	<div>
+		<h3>Modify ending date</h3>
+		<a href="#" class="ui large primary button">
+			Modify ending date
+		</a>
+	</div>
+	<div>
+		<h3>Send relaunch email</h3>
+		<a href="#" class="ui large primary button">
+			Send relaunch email
+		</a>
+	</div>
+	<div>
+		<h3>Payback</h3>
+		<a href="#" class="ui large primary button">
+			Payback
+		</a>
+	</div>
+</div>
+
+<a href="{{ path('subscriptions') }}" class="ui large secondary button" style="margin-top: 50px">
+	Return to subscriptions
+</a>{% endblock %}{% block footer %}
+{{ 'sylius.ui.powered_by'|trans }}
+<a href="https://sylius.com" target="_blank">Sylius v{{ sylius_meta.version }}</a>.
+{{ 'sylius.ui.see_issue'|trans }}?
+<a href="https://github.com/Sylius/Sylius/issues" target="_blank">{{ 'sylius.ui.report_it'|trans }}!</a>{% endblock %}{% block javascripts %}
+{{ sylius_template_event('sylius.admin.layout.javascripts') }}{% endblock %}

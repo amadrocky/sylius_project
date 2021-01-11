@@ -6,12 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Order\Order;
-
 class PaymentController extends AbstractController
 {
     /**
      * @Route("/subscription", name="subscription", methods={"GET"})
+     * 
      * @return Response
      */
     public function index(): Response
@@ -90,7 +89,6 @@ class PaymentController extends AbstractController
             ]);
         }
         
-
         $this->addflash('success', 'Subsciption activated');
 
         return $this->render('subscription/index.html.twig');

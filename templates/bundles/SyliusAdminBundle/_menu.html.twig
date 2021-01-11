@@ -1,0 +1,18 @@
+<div class="item">
+	<div class="ui icon inverted transparent input">
+		<input class="sylius-admin-menu-search-input" type="text" placeholder="{{ 'sylius.ui.search'|trans }}">
+		<i class="search icon"></i>
+	</div>
+</div>
+<div class="item current_ancestor first">
+	<div class="header">SUBSCRIPTIONS</div>
+    <div class="menu">
+    <a href="{{ path('subscriptions') }}" class="item first">
+    <i class="icon payment"></i> Subscriptions
+    </a>
+    </div>
+</div>
+
+<div class="sylius-admin-menu">
+	{{ knp_menu_render('sylius.admin.main', {'template': '@SyliusUi/Menu/sidebar.html.twig', 'currentClass': 'active'}) }}
+</div>
