@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 class PaymentController extends AbstractController
 {
+    protected $apiKey = 'sk_test_51I7qCgIjktDIYiezUfNYo411jpXTPey9JPxQBzojqxMJxHKmUA6XN2czkq5r4dGieTTSZytFtYosvhLReG1m3z3E00GDzfPTIn';
+
     /**
      * @Route("/subscription", name="subscription", methods={"GET"})
      * 
@@ -26,7 +28,7 @@ class PaymentController extends AbstractController
     public function paymentProcess(): Response
     {
         $stripe = new \Stripe\StripeClient(
-            'sk_test_51I7qCgIjktDIYiezUfNYo411jpXTPey9JPxQBzojqxMJxHKmUA6XN2czkq5r4dGieTTSZytFtYosvhLReG1m3z3E00GDzfPTIn'
+            $this->apiKey
           );
 
         $date = new \DateTime();
@@ -84,7 +86,7 @@ class PaymentController extends AbstractController
                 'customer' => $updatedCustomer->id,
                 'cancel_at' => $date->modify('+24 month')->getTimestamp(),
                 'items' => [
-                    ['price' => 'price_1I7sVlIjktDIYiezv2ni8asi'],
+                    ['price' => 'price_1I8jXJIjktDIYiezwhMMIGtg'],
                 ],
             ]);
         }

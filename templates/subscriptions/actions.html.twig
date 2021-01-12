@@ -55,27 +55,40 @@
 <div style="display: flex">
 	<div>
 		<h3>Modify price</h3>
-		<a href="#" class="ui large primary button">
-			Modify price
-		</a>
+		<form action="{{ path('update_price', {'id': subscription['id']}) }}" method="post">
+			<select name="price" style="margin-bottom: 20px; display: block;">
+				{% for price in prices %}
+					<option value="{{ price['id'] }}">$
+						{{ price['amount'] / 100 }}</option>
+				{% endfor %}
+			</select>
+			<button type="submit" class="ui large primary button">
+				Modify price
+			</button>
+		</form>
 	</div>
 	<div>
 		<h3>Modify ending date</h3>
-		<a href="#" class="ui large primary button">
-			Modify ending date
-		</a>
+		<form action="{{ path('update_date', {'id': subscription['id']}) }}" method="post">
+			<input type="date" name="endingDate" style="margin-bottom: 15px; display: block;">
+			<button type="submit" class="ui large primary button">Modify ending date</button>
+		</form>
 	</div>
 	<div>
 		<h3>Send relaunch email</h3>
-		<a href="#" class="ui large primary button">
-			Send relaunch email
-		</a>
+		<form action="{{ path('email_relaunch', {'id': subscription['id']}) }}" method="post">
+			<input type="text" name="email" value="{{ subscription['customer'] }}" style="margin-bottom: 18px; display: block;">
+			<button type="submit" class="ui large primary button">Send relaunch email</button>
+		</form>
 	</div>
 	<div>
 		<h3>Payback</h3>
-		<a href="#" class="ui large primary button">
-			Payback
-		</a>
+		<form action="{{ path('refund', {'id': subscription['id']}) }}" method="post">
+			<p style="margin-bottom: 20px">
+				Click to refund the customer</p>
+				<input type="text" name="customer" value="{{ subscription['customer'] }}" hidden>
+			<button type="submit" class="ui large primary button">Payback</button>
+		</form>
 	</div>
 </div>
 
