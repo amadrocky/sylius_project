@@ -8,8 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SubscriptionsController extends AbstractController
 {
-    protected $apiKey = 'sk_test_51I7qCgIjktDIYiezUfNYo411jpXTPey9JPxQBzojqxMJxHKmUA6XN2czkq5r4dGieTTSZytFtYosvhLReG1m3z3E00GDzfPTIn';
-
     /**
      * @Route("/admin/subscriptions", name="subscriptions", methods={"GET"})
      *
@@ -18,7 +16,7 @@ class SubscriptionsController extends AbstractController
     public function index(): Response
     {
         $stripe = new \Stripe\StripeClient(
-            $this->apiKey
+            getenv('API_KEY')
         );
 
         $subscriptions = [];
@@ -47,7 +45,7 @@ class SubscriptionsController extends AbstractController
     public function actions(): Response
     {
         $stripe = new \Stripe\StripeClient(
-            $this->apiKey
+            getenv('API_KEY')
         );
 
         $subscription = [];
@@ -91,7 +89,7 @@ class SubscriptionsController extends AbstractController
         $price = $_POST['price'];
 
         $stripe = new \Stripe\StripeClient(
-            $this->apiKey
+            getenv('API_KEY')
         );
 
         try {
@@ -120,7 +118,7 @@ class SubscriptionsController extends AbstractController
         $date = (new \DateTime($_POST['endingDate']))->getTimestamp();
 
         $stripe = new \Stripe\StripeClient(
-            $this->apiKey
+            getenv('API_KEY')
         );
 
         try {
@@ -171,7 +169,7 @@ class SubscriptionsController extends AbstractController
         $chargeToRefund = [];
 
         $stripe = new \Stripe\StripeClient(
-            $this->apiKey
+            getenv('API_KEY')
         );
 
         $charges = $stripe->charges->all();

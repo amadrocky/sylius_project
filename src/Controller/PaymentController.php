@@ -8,8 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 class PaymentController extends AbstractController
 {
-    protected $apiKey = 'sk_test_51I7qCgIjktDIYiezUfNYo411jpXTPey9JPxQBzojqxMJxHKmUA6XN2czkq5r4dGieTTSZytFtYosvhLReG1m3z3E00GDzfPTIn';
-
     /**
      * @Route("/subscription", name="subscription", methods={"GET"})
      * 
@@ -28,7 +26,7 @@ class PaymentController extends AbstractController
     public function paymentProcess(): Response
     {
         $stripe = new \Stripe\StripeClient(
-            $this->apiKey
+            getenv('API_KEY')
           );
 
         $date = new \DateTime();
@@ -93,6 +91,6 @@ class PaymentController extends AbstractController
         
         $this->addflash('success', 'Subsciption activated');
 
-        return $this->render('subscription/index.html.twig');
+        return $this->render('payment/index.html.twig');
     }
 }
