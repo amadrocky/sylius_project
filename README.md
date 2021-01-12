@@ -34,10 +34,10 @@ API_KEY= Add your api key
 
 Stripe
 ------------
-Les produits de base sont au nombre 3
-6 mois à 9.99
-12 mois à 29.99
-24 mois à 39.99
+Les produits de base sont au nombre 3.
+6 mois à 9.99.
+12 mois à 29.99.
+24 mois à 39.99.
 Créer les produit dans Stripe pour pouvoir les renseigner (id) dans le fichier PaymentController.php dans la méthode paymentProcess.
 
 Routes
