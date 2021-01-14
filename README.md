@@ -44,7 +44,7 @@ Routes
 ------------
 
 Client (utilisateur) => http://127.0.0.1:8000/subscription
-Admin => Page d'acceuil admin ou => http://127.0.0.1:8000/subscriptions
+Admin => Page d'acceuil admin ou => http://127.0.0.1:8000/admin/subscriptions
 
 Comptes
 ------------
